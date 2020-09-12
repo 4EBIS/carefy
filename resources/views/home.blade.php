@@ -23,7 +23,7 @@
                 <div class="panel-body">
 
                     <form class="forms-sample" method="POST" action="{{ route('publish.question') }}">
-                        @csrf
+                    {{ csrf_field() }}
                         <div class="form-group">
                             <label for="titulo">Título</label>
                             <input type="email" class="form-control" id="exampleInputEmail1" name='title'>
@@ -33,6 +33,9 @@
                             <label for="questao">Dúvida</label>
                             <textarea class="form-control" placeholder="Qual a sua dúvida?" name='body'> </textarea>
                             <small class="form-text text-muted"></small>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control">Enviar</button>
                         </div>
                     </form>
                 </div>
