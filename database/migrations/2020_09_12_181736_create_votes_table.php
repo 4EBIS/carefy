@@ -28,6 +28,6 @@ class CreateVotesTable extends Migration
      */
     public function down()
     {
-        //
+        chema::dropIfExists('votes');
     }
 }
