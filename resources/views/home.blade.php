@@ -3,21 +3,44 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-2 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
+                <div class="panel-heading">
+                    <div class="media">
+                        <img class="mr-3" src="https://via.placeholder.com/135" alt="Generic placeholder image">
+                    </div>
+                </div>
                 <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    {{auth()->user()->name}}
 
-                    You are logged in!
                 </div>
             </div>
         </div>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Pergunte algo a comunidade</div>
+
+                <div class="panel-body">
+
+                    <form class="forms-sample" method="POST" action="{{ route('publish.question') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="titulo">Título</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" name='title'>
+                            <small class="form-text text-muted"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="questao">Dúvida</label>
+                            <textarea class="form-control" placeholder="Qual a sua dúvida?" name='body'> </textarea>
+                            <small class="form-text text-muted"></small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row container-feed">
+
     </div>
 </div>
 @endsection
