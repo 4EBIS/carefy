@@ -18,10 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile', 'Auth/UserController@show')->name('profile');
-Route::get('/gitRequest','GitHubController@sendRequest')->name('git');
 
-Route::put('/update_profile', 'Auth/UserController@update')->name('update.user');
+Route::put('/update_profile', 'Auth\UserController@update')->name('update.user');
 
 Route::post('/comment', 'PublicationsController@comment')->name('publicate.comment');
 Route::post('/publicate', 'PublicationsController@newPublication')->name('publicate.question');

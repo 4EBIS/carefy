@@ -28,10 +28,10 @@ class UserController extends Controller
             $user = User::find($id);
             $user->update($userData);
             
-            return response()->json(['status'=>'success',['message' => 'Dados atualizados!']]);
+            return redirect()->back()->with(['status'=>'success',['message' => 'Dados atualizados!']]);
         }catch(\Exception $e){
             
-            return response()->json(['status'=>'error',['message' => 'Erro ao gravar informações. Tente novamente mais tarde.']]);
+            return redirect()->back()->with(['status'=>'error',['message' => 'Erro ao gravar informações. Tente novamente mais tarde.']]);
         }
         
     }
