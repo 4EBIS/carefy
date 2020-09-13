@@ -31,10 +31,10 @@ class QuestionRequest extends FormRequest
     public function messages()
     {
         return [
-            'required'  => 'O campo :attribute é obrigatório',
-            'string'    => 'O campo :attribute contém dados incorretos',
-            'max'       => 'O campo :attribute excedeu o número de caracteres permitidos',
-            'min'       => 'O campo :attribute está parcialmente incompleto',
+            'required'  => 'Este campo é obrigatório',
+            'string'    => 'Este campo contém dados incorretos',
+            'max'       => 'Este campo excedeu o número de caracteres permitidos',
+            'min'       => 'Campo vazio ou com pouca informação',
         ];
     }
 }

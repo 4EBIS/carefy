@@ -23,7 +23,7 @@ class PublicationsController extends Controller
             $publicationData['user_id'] = auth()->user()->id;
             Publication::create($publicationData);
 
-            return response()->json(['status'=>'success',['message' => 'Publicação efetuada!']]);
+            return redirect()->back()->with(['status'=>'success',['message' => 'Publicação efetuada!']]);
         
         }catch(\Exception $e){
             
