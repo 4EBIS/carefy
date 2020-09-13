@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (session('status'))
+<div class="alert alert-success alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>{{ session('status') }}!</strong> {{ session('message') }}
+</div>
+@endif
+
 <div class="container">
     <!-- Bloco 1 -->
     <div class="row">
@@ -60,7 +68,7 @@
     </div><!-- Fim Bloco 1 -->
 
     <!-- Bloco 2 -->
-    <div class="row container-feed">
+    <div class="row">
         <!-- Exibindo perguntas da comunidade -->
         @foreach($publication as $v => $p)
         <div class="col-md-8 col-md-offset-3">
@@ -72,13 +80,26 @@
                         <div class="panel-heading">
                             <div class="col-sm-2">
                                 <div class="media">
-                                    <img class="mr-3" src="https://via.placeholder.com/90"
-                                        alt="Generic placeholder image">
+                                    <img class="mr-3" src="https://via.placeholder.com/90">
                                 </div>
                             </div>
                             <div class="col-sm-10">
-                                <h4>{{$p->title}}</h4>
-                                <p>{{$p->body}}</p>
+                                <h4>{{$p['title']}}</h4>
+                                <p>{{$p['body']}}</p>
+                                @foreach($p['comments'] as $c)
+                            <div class="row">
+                                <div class="panel-heading">
+                                    <div class="col-sm-2">
+                                        <div class="media">
+                                            <img class="mr-3" src="https://via.placeholder.com/70">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        {{$c->body}}
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                             </div>
                         </div>
                     </div><!-- Fim pergunta -->
@@ -94,19 +115,20 @@
                                                 <span class="label-text btn btn-primary"
                                                 onclick="searchRepo({{$v}})">Buscar</span>
                                         </div>
-                                        <div class="row containerRepo" style="display:block">
-                                                <div class="col-sm-3" id="nomeUG"></div>
+                                        <div class="row containerRepo{{$v}}" style="display:block">
+                                                <div class="col-sm-3" id="nomeUG" ></div>
                                                 <div class="col-sm-9" id="repoUG"></div>
                                             </div>
                                         <form class="forms-sample" method="POST"
                                             action="{{ route('publicate.comment') }}">
                                             {{ csrf_field() }}
-                                            <textarea id="texto" style="resize: vertical"
+                                            <textarea style="resize: vertical"
                                                 class="form-control"
                                                 placeholder="Me mostra um exemplo?" name='body'> </textarea>
-                                            <input type="hidden" name="body2" id="hiddenComment" >
-                                            <div class="form-group">
-                                                <button type="submit" class="form-control">Enviar</button>
+                                            <input type="hidden" name="body2" id="hiddenComment{{$v}}" >
+                                            <input type="hidden" name="publication_id" value="{{$p['id']}}">
+                                            <div class="form-group m-3">
+                                                <button class="form-control">Enviar</button>
                                             </div>
                                         </form>
                                     </div>
