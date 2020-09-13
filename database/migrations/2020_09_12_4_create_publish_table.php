@@ -16,8 +16,8 @@ class CreatePublishTable extends Migration
         Schema::create('publications', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('title');
-            $table->string('body');
+            $table->string('title',70);
+            $table->string('body',1000);
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamp('created_at')->nullable();
         });

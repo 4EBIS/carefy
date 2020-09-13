@@ -33,11 +33,10 @@ class HomeController extends Controller
         foreach($publications as $v=>$p){
             $arr[$v]  =  [
                 'user'  =>  $p->user()->first(),
+                'id'    =>  $p->id,
                 'title' =>  $p->title,
                 'body'  =>  $p->body,
-                'comments'  => [
-                    $p->comment()->get(),
-                ]
+                'comments'  => $p->comment()->get(),
             ];
             foreach($p->comment() as $vl => $c){
                 $arr[$v]['comments'][$vl] = [
@@ -45,7 +44,8 @@ class HomeController extends Controller
                 ];                 
             }
         }
+        //dd($arr,$publications);
         
-        return view('home',["publication"=>$publications]);
+        return view('home',["publication"=>$arr]);
     }
 }

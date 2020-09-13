@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $fillable = [
-        'user_id', 'publisher_id', 'body'
+        'user_id', 'publication_id', 'body'
     ];
-
+    public $timestamps = false;
     public function user(){
         return $this->beongsTo(User::class);
     }

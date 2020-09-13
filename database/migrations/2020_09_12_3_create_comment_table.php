@@ -17,7 +17,7 @@ class CreateCommentTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('publication_id');
-            $table->string('body');
+            $table->string('body', 500);
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('publication_id')->references('id')->on('publications');
             $table->timestamp('created_at')->nullable();
