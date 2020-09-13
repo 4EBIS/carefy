@@ -2,23 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Publish;
+use App\Publication;
 use Illuminate\Http\Request;
 use App\Http\Requests\QuestionRequest;
 
 class PublicationsController extends Controller
 {
 
+    private $publication;
+
     public function comment(){
         
     }
 
-    public function publication(QuestionRequest $request){
+    public function newPublication(QuestionRequest $request){
       
         try{
-
+            
             $publicationData = $request->all();
-            Publish::create($publicationData);
+            $publicationData['user_id'] = auth()->user()->id;
+            Publication::create($publicationData);
 
             return response()->json(['status'=>'success',['message' => 'Publicação efetuada!']]);
         

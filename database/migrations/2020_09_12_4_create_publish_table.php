@@ -16,11 +16,9 @@ class CreatePublishTable extends Migration
         Schema::create('publications', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('feedback_id');
             $table->string('title');
             $table->string('body');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('feedback_id')->references('id')->on('feedbacks');
             $table->timestamp('created_at')->nullable();
         });
     }

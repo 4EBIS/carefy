@@ -9,6 +9,7 @@ class Publication extends Model
     protected $fillable = [
         'user_id', 'feedback_id', 'title','body'
     ];
+    public $timestamps = false;
 
     public function user(){
         return $this->belongsTo(User::class);
