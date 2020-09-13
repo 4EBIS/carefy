@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Publish extends Model
+class Publication extends Model
 {
     protected $fillable = [
         'user_id', 'feedback_id', 'title','body'

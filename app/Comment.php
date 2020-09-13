@@ -14,8 +14,8 @@ class Comment extends Model
         return $this->beongsTo(User::class);
     }
 
-    public function publish(){
-        return $this->hasOne(Publish::class);
+    public function publication(){
+        return $this->hasOne(Publication::class);
     }
 
     public function feedback(){

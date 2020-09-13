@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class QuestionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          => ['required','string','min:3','max:70'],
-            'email'         => ['required','unique:users','email','max:70']
+            'title'          => ['required','string','min:3','max:70'],
+            'body'         => ['required','string','min:3','max:1000']
         ];
     }
     public function messages()
@@ -35,8 +35,6 @@ class UserRequest extends FormRequest
             'string'    => 'O campo :attribute contém dados incorretos',
             'max'       => 'O campo :attribute excedeu o número de caracteres permitidos',
             'min'       => 'O campo :attribute está parcialmente incompleto',
-            'unique'    => 'Este :attribute já está sendo utilizado',
-            'email'     => ':attribute não é um E-mail válido',
         ];
     }
 }

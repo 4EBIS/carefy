@@ -35,7 +35,7 @@ class User extends Authenticatable
         return $this->hasMany(Feedback::class);
     }
 
-    public function publish(){
-        return $this->hasMany(Publish::class);
+    public function publication(){
+        return $this->hasMany(Publication::class);
     }
 }

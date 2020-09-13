@@ -22,6 +22,6 @@ Route::get('/profile', 'Auth/UserController@show')->name('profile');
 
 Route::put('/update_profile', 'Auth/UserController@update')->name('update.user');
 
-Route::post('/comment', 'PublisherController@commentPublish')->name('publish.comment');
-Route::post('/publish', 'PublisherController@questionPublish')->name('publish.question');
-Route::post('/feedback', 'PublisherController@feedback')->name('publish.feedback');
+Route::post('/comment', 'PublicationsController@comment')->name('publicate.comment');
+Route::post('/publish', 'PublicationsController@publication')->name('publicate.question');
+Route::post('/feedback', 'PublicationsController@feedback')->name('publcate.feedback');
