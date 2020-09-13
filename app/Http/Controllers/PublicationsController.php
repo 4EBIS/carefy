@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Publish;
 use Illuminate\Http\Request;
+use App\Http\Requests\QuestionRequest;
 
 class PublicationsController extends Controller
 {

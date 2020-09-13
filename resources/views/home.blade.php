@@ -22,11 +22,11 @@
 
                 <div class="panel-body">
 
-                    <form class="forms-sample" method="POST" action="{{ route('publish.question') }}">
+                    <form class="forms-sample" method="POST" action="{{ route('publicate.question') }}">
                     {{ csrf_field() }}
                         <div class="form-group">
                             <label for="titulo">Título</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" name='title'>
+                            <input type="text" class="form-control" name='title'>
                             <small class="form-text text-muted"></small>
                         </div>
                         <div class="form-group">
