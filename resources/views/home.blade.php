@@ -146,4 +146,57 @@
         @endforeach
     </div><!-- Fim Bloco 2 -->
 </div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <form class="form-horizontal" method="GET" action="{{ route('update.user') }}">
+                            {{ csrf_field() }}
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Perfil de usuário</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <label for="name" class="col-md-4 control-label">Nome</label>
+
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control" name="name"
+                                        value="{{ auth()->user()->name }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <label for="email" class="col-md-4 control-label">E-mail</label>
+
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control" name="email"
+                                        value="{{ auth()->user()->email }}" disabled>
+
+                                    @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Atualizar dados</button>
+                    </div>
+                </div>
+            </div>
+            
+            </form>
+        </div>
 @endsection

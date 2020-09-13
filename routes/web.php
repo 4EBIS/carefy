@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::put('/update_profile', 'Auth\UserController@update')->name('update.user');
+Route::get('/update_profile', 'UserController@update')->name('update.user');
 
 Route::post('/comment', 'PublicationsController@comment')->name('publicate.comment');
 Route::post('/publicate', 'PublicationsController@newPublication')->name('publicate.question');
