@@ -27,6 +27,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+/**
+ * Model responsável pelo reacionamento entra as entidades descritas abaixo nos métodos
+ * 
+ */
     public function comment(){
         return $this->hasMany(Comment::class);
     }

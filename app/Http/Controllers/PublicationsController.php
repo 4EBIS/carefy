@@ -8,11 +8,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests\QuestionRequest;
 use App\Http\Requests\CommentRequest;
 
+/**
+ * Controller usado para manipular informações de publicação em geral
+ */
 class PublicationsController extends Controller
 {
 
-    private $publication;
-
+    /**
+     * Função responsável por publicar comentário
+     * Usando um Request personalizado para validar os imputs
+     */
     public function comment(CommentRequest $request){
         
         try{
@@ -28,7 +33,10 @@ class PublicationsController extends Controller
             return redirect()->back()->with(['status'=>'error',['message' => 'Erro ao gravar informações. Tente novamente mais tarde.']]);
         }
     }
-
+    /**
+     * Função responsável por publicar Dúvidas
+     * Usando um Request personalizado para validar os imputs
+     */
     public function newPublication(QuestionRequest $request){
       
         try{
@@ -44,7 +52,10 @@ class PublicationsController extends Controller
             return redirect()->back()->with(['status'=>'error','message' => 'Erro ao gravar informações. Tente novamente mais tarde.']);
         }
     }
-
+    /**
+     * Função responsável por aplicar os feedbacks nos comentários,
+     * porêm,  ideia ainda não foi aplicada
+     */
     public function feedback(){
 
     }

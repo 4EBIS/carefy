@@ -3,7 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+ 
+/**
+ * Model responsável pelo reacionamento entra as entidades descritas abaixo nos métodos
+ * 
+ */
 class Publication extends Model
 {
     protected $fillable = [

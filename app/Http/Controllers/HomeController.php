@@ -9,27 +9,24 @@ use App\Comment;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    /*
+* Usando o construtor como controle de acesso ao controller
+*/
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /*
+    * Função usada para exibir as informações na página inicial.
+    * Ela preenche o fed com publicações e comentários
+    */
     public function index()
     {
         $publications = Publication::all();
 
         $arr = Array();
-
+        
         foreach($publications as $v=>$p){
             $arr[$v]  =  [
                 'user'  =>  $p->user()->first(),
